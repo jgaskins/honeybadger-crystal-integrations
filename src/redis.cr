@@ -15,7 +15,7 @@ class Redis::Connection
       Honeybadger.event(
         type: "redis.connection.run",
         trace_id: Fiber.current.honeybadger_trace_id,
-        command: command,
+        command: command.to_a,
         duration_ms: (Time.monotonic - start).total_milliseconds,
         error: error,
       )
